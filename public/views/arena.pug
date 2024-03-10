@@ -1,0 +1,110 @@
+extends header.pug
+
+block content
+    div.m-4.row.center.justify-content-center
+        div.card.m-2.card.col-4.bg-dark
+            h3.text-white.m-2 Attacker
+            hr.text-white.m-2
+            i.text-white.m-2 Choose your fighter
+            div.m-2
+                select.form-control#heroSelect(name='heroSelect')
+                    each character in characters
+                        option(value=JSON.stringify(character))=character.name
+            hr.text-white.m-2
+            h3.text-white.m-2 Stats:
+            hr.text-white.m-2
+            h1.hidden#attackerid(name = 'attackerid')
+            h3.m-2.text-white#name
+            h5.m-2.text-white#health
+            h5.m-2.text-white#armor
+                h5#characterWeaponData.m-2.text-white Character weapon datas:
+                hr.text-white
+                div.card.m-2.bg-white 
+                    p.m-2#weapon
+                    p.m-2#weapondamage
+                    p.m-2#weaponprice
+            script.
+                const selectElement = document.getElementById('heroSelect');
+                const selectedOptionElement = document.getElementById('name');
+                const healthElement = document.getElementById('health');
+                const armorElement = document.getElementById('armor');
+                const weaponElement = document.getElementById('weapon');
+                const weapondamage = document.getElementById('weapondamage');
+                const weaponprice = document.getElementById('weaponprice');
+                const attackerid = document.getElementById('attackerid');
+
+                selectElement.addEventListener('change', function() {
+                    const selectedOption = JSON.parse(selectElement.options[selectElement.selectedIndex].value);
+                    
+                    selectedOptionElement.textContent = selectedOption.name;
+                    healthElement.textContent = "Health: " + selectedOption.health;
+                    armorElement.textContent = "Armor: " + selectedOption.armor;
+                    weaponElement.textContent = "Weapon name: " + selectedOption.weapon.name;
+                    weapondamage.textContent = "Weapon damage: " + selectedOption.weapon.dmg;
+                    weaponprice.textContent = "Weapon price: " + selectedOption.weapon.price
+                    attackerid.value = selectedOption.id;
+                });
+
+        div.card.m-2.card.col-4.bg-dark
+            h3.text-white.m-2 Deffender
+            hr.text-white.m-2
+            i.text-white.m-2 Choose your opponent
+            div.m-2
+                select.form-control#opponentSelect(name='opponentSelect')
+                    each opponent in characters
+                        option(value=JSON.stringify(opponent))=opponent.name
+            hr.text-white.m-2
+            h3.text-white.m-2 Stats:
+            hr.text-white.m-2
+            p.hidden#opponentid(name = 'opponentid')
+            h3.m-2.text-white#opponentname
+            h5.m-2.text-white#opponenthealth
+            h5.m-2.text-white#opponentarmor
+            h5#opponentWeaponData.m-2.text-white Character weapon datas:
+            hr.text-white
+            div.card.m-2.bg-white 
+                p.m-2#opponentweapon
+                p.m-2#opponentweapondamage
+                p.m-2#opponentweaponprice
+            script.
+                const opponentselectElement = document.getElementById('opponentSelect');
+                const opponentselectedOptionElement = document.getElementById('opponentname');
+                const opponenthealthElement = document.getElementById('opponenthealth');
+                const opponentarmorElement = document.getElementById('opponentarmor');
+                const opponentweaponElement = document.getElementById('opponentweapon');
+                const opponentweapondamage = document.getElementById('opponentweapondamage');
+                const opponentweaponprice = document.getElementById('opponentweaponprice');
+                const opponentid = document.getElementById('opponentid');
+
+                opponentselectElement.addEventListener('change', function() {
+                    const opponentselectedOption = JSON.parse(opponentselectElement.options[opponentselectElement.selectedIndex].value);
+                        
+                    opponentselectedOptionElement.textContent = opponentselectedOption.name;
+                    opponenthealthElement.textContent = "Health: " + opponentselectedOption.health;
+                    opponentarmorElement.textContent = "Armor: " + opponentselectedOption.armor;
+                    opponentweaponElement.textContent = "Weapon name: " + opponentselectedOption.weapon.name;
+                    opponentweapondamage.textContent = "Weapon damage: " + opponentselectedOption.weapon.dmg;
+                    opponentweaponprice.textContent = "Weapon price: " + opponentselectedOption.weapon.price
+                    opponentid.value = opponentselectedOption.id;
+                });
+
+    hr.m-4
+    div.m-4.row.center.justify-content-center
+        div.card.m-2.card.col-4.bg-dark.text-center
+            button#fightButton.btn.btn-info.m-2(type='button' onclick='handleFightButtonClick()') Fight!
+
+        script.
+            function handleFightButtonClick() {
+                const attackerid = document.getElementById('attackerid').value;
+                const opponentid = document.getElementById('opponentid').value;
+                if(attackerid !== "" && !isNaN(attackerid) && attackerid > 0 && opponentid !== "" && !isNaN(opponentid) && opponentid > 0) {
+                    window.location.href = `/duel/${attackerid}/${opponentid}`;
+                }
+            }
+
+
+        
+    if winner != null
+        div.m-4.row.center.justify-content-center
+            div.card.m-2.card.col-4.bg-success
+                h1.m-2 The Winner Is : #{winner.name}

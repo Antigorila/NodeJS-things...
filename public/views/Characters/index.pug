@@ -1,0 +1,22 @@
+extends ../header.pug
+
+block content
+    div.m-4.row.center.justify-content-center
+        each character in characters
+            div.card.m-2.card.border-dark.col-4
+                    h3.m-2=character.name
+                    hr.m-2
+                    h3.m-2 Health Points: #{character.health}
+                    hr.m-2
+                    h3.m-2 Armor: #{character.armor}
+                    hr.m-2
+                    if character.weapon != null
+                        h3.m-2 Weapon: #{character.weapon.name}
+                    hr.m-2
+                    div.m-2.card.bg-dark.text-center
+                        form(action=`/show/${character.id}` method='get')
+                            button.btn.btn-info.m-2(type='submit') Inspect
+                        form(action=`/update/${character.id}` method='get')
+                            button.btn.btn-info.m-2(type='submit') Update
+                        form(action=`/delete/${character.id}` method='get')
+                            button.btn.btn-info.m-2(type='submit') Delete

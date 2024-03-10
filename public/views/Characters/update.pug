@@ -1,0 +1,42 @@
+extends ../header.pug
+
+block content
+    div.m-4.row.center.justify-content-center
+            div.card.m-2.card.border-dark.col-4
+                    h3 Character name:
+                    input(type='hidden' value=character.id id='charid' name='charid')
+                    input.form-control(value=character.name id='charName' name='charName')
+                    hr
+                    h3 Character health:
+                    input.form-control(value=character.health id='charHealth' name='charHealth')
+                    hr
+                    h3 Character armor:
+                    input.form-control(value=character.armor id='charArmor' name='charArmor')
+                    hr
+                    h3 Character weapon datas:
+                    div.card.m-2
+                        p.m-2 Character weapon name: #{character.weapon.name}
+                        p.m-2 Character weapon damage: #{character.weapon.dmg}
+                        p.m-2 Character weapon price: #{character.weapon.price}
+                        p.m-2 Switch weapon:
+                        div.card.m-2
+                            select.form-control(id='weaponSelect' name="weaponSelect")
+                                each weapon in weapons
+                                    if weapon.name == character.weapon.name
+                                        option(selected='true' value=weapon.id)=weapon.name
+                                    else
+                                        option(value=weapon.id)=weapon.name
+                        div.m-2.card.bg-dark.text-center
+                            form(action=`/updateCharacter/:id/:name/:hp/:armor/:weaponid` method='get')
+                                button.btn.btn-info.m-2(type='submit') Update
+
+                    script.
+                        document.querySelector('form').addEventListener('submit', function(e) {
+                            e.preventDefault();
+                            const charid = document.getElementById('charid').value;
+                            const charName = document.getElementById('charName').value;
+                            const charHealth = document.getElementById('charHealth').value;
+                            const charArmor = document.getElementById('charArmor').value;
+                            const weaponId = document.getElementById('weaponSelect').value;
+                            window.location.href = `/updateCharacter/${charid}/${charName}/${charHealth}/${charArmor}/${weaponId}`;
+                        });

@@ -1,0 +1,26 @@
+extends header.pug
+
+block content
+    hr.m-2
+    i Characters:
+    div.m-4.row.center.justify-content-center
+        each character in characters
+            div.card.m-2.card.col-4.bg-dark
+                    h3.text-white.m-2=character.name
+                    hr.text-white.m-2
+                    h3.text-white.m-2 Health Points: #{character.health}
+                    hr.text-white.m-2
+                    h3.text-white.m-2 Armor: #{character.armor}
+                    hr.text-white.m-2
+                    if character.weapon != null
+                        h3.text-white.m-2 Weapon: #{character.weapon.name}
+    hr.m-2
+    i Weapons:
+    div.m-4.row.center.justify-content-center
+        each weapon in weapons
+            div.card.m-2.card.col-4.bg-dark
+                h3.text-white.m-2=weapon.name
+                hr.m-2.text-white
+                h4.text-white.m-2 Weapon damage: #{weapon.dmg} dmg
+                hr.m-2.text-white
+                h4.text-white.m-2 Weapon price: #{weapon.price} gold

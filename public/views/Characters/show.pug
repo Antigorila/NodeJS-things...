@@ -1,0 +1,16 @@
+extends ../header.pug
+
+block content
+    div.m-4.row.center.justify-content-center
+            div.card.m-2.card.border-dark.col-4
+                h3.m-2 Character name: #{character.name}
+                hr
+                h3.m-2 Character health: #{character.health}
+                hr
+                h3.m-2 Character armor: #{character.armor}
+                hr
+                h3.m-2 Character weapon datas:
+                div.card.m-2.bg-dark
+                    p.m-2.text-white Character weapon name: #{character.weapon.name}
+                    p.m-2.text-white Character weapon damage: #{character.weapon.dmg}
+                    p.m-2.text-white Character weapon price: #{character.weapon.price}

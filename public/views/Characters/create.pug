@@ -1,0 +1,24 @@
+extends ../header.pug
+
+block content
+    div.m-4.row.justify-content-center
+            div.card.m-2.card.border-dark.col-4
+                div.m-2
+                    h2 Character name:
+                    input.form-control(placeholder="Character name", id="charName")
+                h2 Choose a weapon datas:
+                div.m-2
+                    select.form-control(id="weaponSelect")
+                        each weapon in weapons
+                            option(value=weapon.id)= weapon.name
+                div.m-2.card.bg-dark.text-center
+                    form(action='/createCharacter' method='get')
+                        button.btn.btn-info.m-2(type='submit') Create
+
+                script.
+                    document.querySelector('form').addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const charName = document.getElementById('charName').value;
+                        const weaponId = document.getElementById('weaponSelect').value;
+                        window.location.href = `/createCharacter/${charName}/${weaponId}`;
+                    });

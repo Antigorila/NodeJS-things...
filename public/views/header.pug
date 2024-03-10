@@ -1,0 +1,23 @@
+doctype html
+head
+    link(rel="stylesheet" href="/bootstrap.min.css")
+    script(src="/bootstrap.min.js")
+    link(rel="stylesheet" href="/style.css")
+    title Home
+body
+    header 
+        nav(class='navbar navbar-expand-lg navbar-dark bg-dark').container-fluid
+            a(class='navbar-brand', href='/') Navbar
+            button(class='navbar-toggler', type='button', data-bs-toggle='collapse', data-bs-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+                span(class='navbar-toggler-icon')
+            .collapse.navbar-collapse(id='navbarNavAltMarkup')
+                .navbar-nav
+                    a(class='nav-link active', aria-current='page', href='http://localhost:3000') Home
+                    a(class='nav-link', href='http://localhost:3000/create') Create character
+                    //a(class='nav-link', href='http://localhost:3000/delete') Delete
+                    a(class='nav-link', href='http://localhost:3000/index') Index
+                    //a(class='nav-link', href='/show') Show
+                    //a(class='nav-link', href='http://localhost:3000/update') Update
+                    a(class='nav-link', href='http://localhost:3000/createDatabase') Create Database
+                    a(class='nav-link', href='/fight') Fight
+    block content
