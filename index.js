@@ -20,8 +20,11 @@
     
     const {MongoClient} = require("mongodb");
     const db = require('./basicMongoFunctions');
-const { log } = require('console');
-    
+    const { log } = require('console');
+
+    const staticcharacters = [character, character1, character2, character3, character4];
+    const staticweapons = [weapon, weapon1, weapon2, weapon3, weapon4];
+
     const url = "mongodb://localhost:27017";
     const client = new MongoClient(url);
     
@@ -135,8 +138,8 @@ const { log } = require('console');
                     db.createCollection(client, dbName, "Characters");
                     db.createCollection(client, dbName, "Weapons");
             
-                    db.createDocs(client, dbName, "Characters", characters);
-                    db.createDocs(client, dbName, "Weapons", weapons);
+                    db.createDocs(client, dbName, "Characters", staticcharacters);
+                    db.createDocs(client, dbName, "Weapons", staticweapons);
     
                     characters = await db.listAll(client, dbName, "Characters");
                     weapons = await db.listAll(client, dbName, "Weapons");
