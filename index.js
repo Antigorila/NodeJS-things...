@@ -33,76 +33,76 @@
     //#region Data fill    
     let weapon = {
         "id" : 1,
-        "name" : "Sword",
+        "name" : "Heartsbane",
         "dmg" : 10,
         "price" : 1500
     }
     
     let weapon1 = {
         "id" : 2,
-        "name" : "Mace",
+        "name" : "Lightbringer",
         "dmg" : 35,
         "price" : 1555
     }
     
     let weapon2 = {
         "id" : 3,
-        "name" : "Cross bow",
+        "name" : "White Walker Ice Blade",
         "dmg" : 5,
         "price" : 500
     }
     
     let weapon3 = {
         "id" : 4,
-        "name" : "Staff of the arc Mage",
+        "name" : "Blackfyre",
         "dmg" : 700,
         "price" : 5000
     }
     
     let weapon4 = {
         "id" : 5,
-        "name" : "Dragon Slayer Blade",
+        "name" : "Oathkeeper",
         "dmg" : 70,
         "price" : 4500
     }
 
     let character = {
         "id" : 1,
-        "name" : "Bozó",
+        "name" : "Ser Jaime Lannister",
         "health" : 95,
-        "armor" : 55,
+        "armor" : 20,
         "weapon" : weapon
     }
     
     let character1 = {
         "id" : 2,
-        "name" : "Másik Bozó",
-        "health" : 100,
-        "armor" : 100,
+        "name" : "Jon Snow",
+        "health" : 85,
+        "armor" : 30,
         "weapon" : weapon1
     }
     
     let character2 = {
         "id" : 3,
-        "name" : "Bozó a kalandor",
-        "health" : 70,
-        "armor" : 0,
+        "name" : "Ser Jorah Mormont",
+        "health" : 95,
+        "armor" : 30,
         "weapon" : weapon2
     }
     
     let character3 = {
         "id" : 4,
-        "name" : "Bozó a védelmező",
-        "health" : 150,
-        "armor" : 150,
+        "name" : "Daenerys Targaryen",
+        "health" : 75,
+        "armor" : 15,
         "weapon" : weapon4
     }
 
     let character4 = {
         "id" : 5,
-        "name" : "Bozó the weak",
-        "health" : 15,
-        "armor" : 0,
+        "name" : "Lord Eddard Stark",
+        "health" : 100,
+        "armor" : 50,
         "weapon" : weapon1
     }
     //#endregion
